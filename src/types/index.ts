@@ -17,3 +17,17 @@ export interface CronJobConfig {
   schedule: string;
   apiUrl: string | undefined;
 }
+
+export interface TicketData {
+  title: string;
+  description: string;
+  bannerImageUrl?: string;
+  startTime: string;
+  endTime: string;
+  location: string;
+  price: number;
+  priceDescription?: string;
+  qrId: string;
+  qrCode: string;
+  userId: string;
+}
