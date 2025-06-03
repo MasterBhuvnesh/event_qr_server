@@ -3,7 +3,7 @@ import cors from "cors";
 import { config } from "./config";
 import { HealthCheckJob } from "./utils/cron";
 
-import ticketRoute from "./routes/ticket";
+import ticketRoute from "./routes/ticketscan";
 import qrScanRoute from "./routes/qrscan";
 const app = express();
 

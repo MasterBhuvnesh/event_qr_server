@@ -19,15 +19,28 @@ export interface CronJobConfig {
 }
 
 export interface TicketData {
-  title: string;
-  description: string;
-  bannerImageUrl?: string;
-  startTime: string;
-  endTime: string;
-  location: string;
-  price: number;
-  priceDescription?: string;
-  qrId: string;
-  qrCode: string;
-  userId: string;
+  event: {
+    title: string;
+    description: string;
+    banner_image_url: string;
+    category: string;
+    date_time: {
+      start: string | Date;
+      end: string | Date;
+    };
+    pricing: {
+      amount: string | number;
+    };
+    location: string;
+    organizer: {
+      full_name: string;
+    };
+  };
+  registration: {
+    code: string;
+  };
+  user: {
+    full_name: string;
+    email: string;
+  };
 }

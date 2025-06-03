@@ -18,12 +18,12 @@ export async function generateAndUploadQR(
 
     const fileName = `${userId}/${qrId}.png`;
 
-    if (!config.supabaseStorageBucket) {
+    if (!config.supabaseStorageBucketQR) {
       throw new Error("supabaseStorageBucket is not defined in config");
     }
 
     const { data, error } = await supabase.storage
-      .from(config.supabaseStorageBucket)
+      .from(config.supabaseStorageBucketQR)
       .upload(fileName, qrBuffer, {
         contentType: "image/png",
         upsert: true,
@@ -39,7 +39,7 @@ export async function generateAndUploadQR(
     }
 
     const { data: urlData } = supabase.storage
-      .from(config.supabaseStorageBucket)
+      .from(config.supabaseStorageBucketQR)
       .getPublicUrl(fileName);
 
     return {

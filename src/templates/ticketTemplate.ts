@@ -1,20 +1,7 @@
-import express from "express";
-import { generateQR } from "../utils/generateQR";
-import { htmlToPng } from "../utils/htmlToImage";
+import { TicketData } from "../types";
 
-const router = express.Router();
-
-router.post("/ticket", async (req, res) => {
-  try {
-    const { data } = req.body;
-    const qrData = {
-      qrId: data.registration.id,
-      qrCode: data.registration.code,
-    };
-
-    const qrImage = await generateQR(qrData);
-
-    const html = `
+export function generateTicketHTML(data: TicketData, qrImage: string) {
+  return `
       <html>
         <head>
           <style>
@@ -305,15 +292,4 @@ body {
 </body>
       </html>
     `;
-
-    const imageBuffer = await htmlToPng(html);
-
-    res.set("Content-Type", "image/png");
-    res.send(imageBuffer);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Failed to generate ticket");
-  }
-});
-
-export default router;
+}
