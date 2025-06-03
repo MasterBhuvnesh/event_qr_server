@@ -1,12 +1,12 @@
 import puppeteer from "puppeteer";
 
 export const htmlToPng = async (html: string): Promise<Buffer> => {
-  const browser = await puppeteer.launch({
-    headless: true,
-    // executablePath: executablePath(), // debugging - 12:20 PM ,June 03
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
-
+  // const browser = await puppeteer.launch({
+  //   headless: true,
+  //   // executablePath: executablePath(), // debugging - 12:20 PM ,June 03
+  //   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  // });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: "networkidle0" });
 
