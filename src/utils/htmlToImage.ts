@@ -1,10 +1,12 @@
-import puppeteer from "puppeteer";
+import puppeteer, { executablePath } from "puppeteer";
 
 export const htmlToPng = async (html: string): Promise<Buffer> => {
   const browser = await puppeteer.launch({
     headless: true,
+    executablePath: executablePath(),
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
+
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: "networkidle0" });
 
