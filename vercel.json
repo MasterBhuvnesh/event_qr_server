@@ -1,35 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["dist/**", "node_modules/**"],
-        "maxLambdaSize": "50mb"
-      }
-    }
-  ],
+  "builds": [{ "src": "dist/server.js", "use": "@vercel/node" }],
   "routes": [
     {
-      "src": "/ticket",
-      "dest": "dist/server.js",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/qr",
-      "dest": "dist/server.js",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/health",
-      "dest": "dist/server.js",
-      "methods": ["GET"]
-    },
-    {
       "src": "/(.*)",
-      "status": 404,
-      "dest": "dist/server.js"
+      "dest": "/"
     }
   ]
 }
