@@ -7,7 +7,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci && npm run build
 COPY . .
 
 EXPOSE 3000
