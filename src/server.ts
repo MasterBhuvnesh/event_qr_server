@@ -5,20 +5,20 @@ import { HealthCheckJob } from "./utils/cron";
 
 import ticketRoute from "./routes/ticketscan";
 import qrScanRoute from "./routes/qrscan";
-//  ----------------------------------------
-import { execSync } from "child_process";
+// //  ----------------------------------------
+// import { execSync } from "child_process";
 
-try {
-  const chromePath = execSync(
-    "which chromium-browser || which chromium || which google-chrome || which chrome"
-  )
-    .toString()
-    .trim();
-  console.log("System Chrome path:", chromePath);
-} catch (e) {
-  console.log("No system Chrome found");
-}
-//  ----------------------------------------
+// try {
+//   const chromePath = execSync(
+//     "which chromium-browser || which chromium || which google-chrome || which chrome"
+//   )
+//     .toString()
+//     .trim();
+//   console.log("System Chrome path:", chromePath);
+// } catch (e) {
+//   console.log("No system Chrome found");
+// }
+// //  ----------------------------------------
 
 const app = express();
 
@@ -31,6 +31,7 @@ const job = new HealthCheckJob({
   schedule: "*/14 * * * *",
   apiUrl: config.apiUrl,
 });
+
 job.start();
 
 // Health check endpoint

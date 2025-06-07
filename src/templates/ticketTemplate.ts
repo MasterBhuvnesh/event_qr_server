@@ -1,4 +1,5 @@
 import { TicketData } from "../types";
+import { formatDate } from "../utils/date";
 
 export function generateTicketHTML(data: TicketData, qrImage: string) {
   return `
@@ -246,15 +247,8 @@ body {
             <span>${data.event.category}</span>
         </div>
         <div class="datetime">
-            <p><b>From :</b> ${new Date(
-              data.event.date_time.start
-            ).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}
-</p>
-            <p><b>To :</b> ${new Date(data.event.date_time.end).toLocaleString(
-              "en-IN",
-              { timeZone: "Asia/Kolkata" }
-            )}
-</p>
+            <p><b>From :</b> ${formatDate(data.event.date_time.start)}</p>
+            <p><b>To :</b> ${formatDate(data.event.date_time.end)}</p>
         </div>
       </div>
      
