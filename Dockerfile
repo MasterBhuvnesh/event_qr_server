@@ -6,13 +6,10 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
 WORKDIR /app
 
-COPY package*.json .
-RUN npm install
-
+COPY package*.json ./
+RUN npm ci
 COPY . .
-
-RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm","run","start"]
+CMD ["npm", "run", "start"]
