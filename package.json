@@ -7,11 +7,6 @@
     "start": "node dist/server.js",
     "dev": "ts-node-dev src/server.ts"
   },
-  "resolutions": {
-    "rimraf": "^4.0.0",
-    "glob": "^9.0.0",
-    "inflight": "^2.0.0"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
